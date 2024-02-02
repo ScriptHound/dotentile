@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptHound.Dotentile", "ScriptHound.Dotentile\ScriptHound.Dotentile.csproj", "{DABC7EA7-5EB8-4347-9CF0-606A15441B14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dotentile.Tests", "Dotentile.Tests\Dotentile.Tests.csproj", "{64155258-892F-4FE6-ABC7-5699450FC70B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DABC7EA7-5EB8-4347-9CF0-606A15441B14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DABC7EA7-5EB8-4347-9CF0-606A15441B14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DABC7EA7-5EB8-4347-9CF0-606A15441B14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DABC7EA7-5EB8-4347-9CF0-606A15441B14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64155258-892F-4FE6-ABC7-5699450FC70B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64155258-892F-4FE6-ABC7-5699450FC70B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64155258-892F-4FE6-ABC7-5699450FC70B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64155258-892F-4FE6-ABC7-5699450FC70B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
