@@ -24,7 +24,7 @@ public class TestTranslation
         var z = 14;
 
         var latLon = Translation.LatLonFromXYZ(x, y, z);
-        var expected = new List<float> { 72.8613281f, 39.3512917f };
+        var expected = new Coordinate(72.8613281f, 39.3512917f);
         Assert.Equal(expected, latLon);
     }
     
@@ -51,5 +51,16 @@ public class TestTranslation
             new XYZTile(11509, 6242, 14)
         };
         Assert.Equal(expected, tiles);
+    }
+    
+    [Fact]
+    public void TestExtentOfXYZ()
+    {
+        var x = 11508;
+        var y = 6241;
+        var z = 14;
+        var extent = Translation.ExtentOfXYZ(x, y, z);
+        var expected = new Extent(39.3512917f, 72.8613281f, 39.344722f, 72.8761353f);
+        Assert.Equal(expected, extent);
     }
 }
