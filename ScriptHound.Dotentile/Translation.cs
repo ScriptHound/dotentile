@@ -1,4 +1,5 @@
-﻿using OSGeo.OGR;
+﻿using System.Diagnostics;
+using OSGeo.OGR;
 
 namespace Dotentile;
 
@@ -56,7 +57,9 @@ public class Translation
         {
             for (int y = topLeft[1]; y <= bottomRight[1]; y++)
             {
-                var tilePoint = Geometry.CreateFromWkt($"POINT({x} {y})");
+                var extentOfTile = ExtentOfXYZ(x, y, zoom);
+                var tileWkt = $"POLYGON(({extentOfTile.NElon} {extentOfTile.NElat}, {extentOfTile.NElon} {extentOfTile.SWlat}, {extentOfTile.SWlon} {extentOfTile.SWlat}, {extentOfTile.SWlon} {extentOfTile.NElat}, {extentOfTile.NElon} {extentOfTile.NElat}))";
+                var tilePoint = Geometry.CreateFromWkt(tileWkt);
                 var tileIntersects = tilePoint.Intersects(geometry);
                 if (tileIntersects)
                 {
