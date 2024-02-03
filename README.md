@@ -4,6 +4,10 @@ and vice versa.
 
 Inspired by [mercantile](https://pypi.org/project/mercantile/)
 
+## Installation
+```bash
+dotnet add package ScriptHound.Dotentile
+```
 
 ## Examples
 
@@ -36,3 +40,4 @@ var geoJson = "{\"type\": \"Polygon\", \"coordinates\": [[[-180, 85], [180, 85],
 var zoom = 14;
 var tiles = Translation.TilesFromGeojson(geoJson, zoom);
 ```
+
