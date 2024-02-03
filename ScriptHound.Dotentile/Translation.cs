@@ -20,26 +20,19 @@ public struct XYZTile
 
 public class Translation
 {
-    public static List<int> XYZFromLatLon(float lat, float lon, float zoom)
+    public static List<int> XYZFromLatLon(float lat, float lon, int zoom)
     {
-        var n = (float)Math.Pow(2, zoom);
-        var x = (int)(n * ((lon + 180) / 360));
-        var y = (int)(n * (1 - (Math.Log(Math.Tan(lat * Math.PI / 180) + 1 / Math.Cos(lat * Math.PI / 180)) / Math.PI)) / 2);
-        return new List<int> { x, y, (int)zoom };
+        var x = (int)((lon + 180.0) / 360.0 * (1 << zoom));
+        var y = (int)((1.0 - Math.Log(Math.Tan(lat * Math.PI / 180.0) + 1.0 / Math.Cos(lat * Math.PI / 180.0)) / Math.PI) / 2.0 * (1 << zoom));
+        return new List<int> { x, y, zoom };
     }
 
     public static List<float> LatLonFromXYZ(int x, int y, int z)
     {
-        float lat = 0;
-        float lon = 0;
-        
-        float p = (float)Math.Sqrt(x * x + y * y);
-        lat = (float)Math.Atan2(z, p * (1.0f - 0.00669438f));
-        float n = (float)Math.Atan2(z + 0.00669438f * 6378137.0f * (float)Math.Sin(lat), p);
-        lon = (float)Math.Atan2(y, x);
+        double n = Math.PI - ((2.0 * Math.PI * y) / Math.Pow(2.0, z));
 
-        lat = lat * 180 / (float)Math.PI;
-        lon = lon * 180 / (float)Math.PI;
+        var lat = (float)((x / Math.Pow(2.0, z) * 360.0) - 180.0);
+        var lon = (float)(180.0 / Math.PI * Math.Atan(Math.Sinh(n)));
 
         return new List<float> { lat, lon };
     }

@@ -2,13 +2,13 @@ using Dotentile;
 
 namespace Dotentile.Tests;
 
-public class UnitTest1
+public class TestTranslation
 {
     [Fact]
     public void TestTranslationToXyz()
     {
-        var lon = 39.344371f;
-        var lat = 72.878013f;
+        var lat = 39.344722f;
+        var lon = 72.8761353f;
         var zoom = 14;
 
         var xyz = Translation.XYZFromLatLon(lat, lon, zoom);
@@ -33,7 +33,7 @@ public class UnitTest1
     {
         var tile = new XYZTile(11508, 6241, 14);
         var geoJson = Translation.XYZAsGeoJson(tile);
-        var expected = "{\"type\": \"Point\", \"coordinates\": [39.344371, 72.878013]}";
+        var expected = "{ \"type\": \"Point\", \"coordinates\": [39.344371, 72.878013]} ";
         Assert.Equal(expected, geoJson);
     }
     
