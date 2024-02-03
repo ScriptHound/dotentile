@@ -27,6 +27,9 @@ public class Translation
         return new List<int> { x, y, zoom };
     }
 
+    // <summary>
+    // Method <c>LatLonFromXYZ</c> returns upper right corner of XYZ tile
+    // </summary>
     public static List<float> LatLonFromXYZ(int x, int y, int z)
     {
         double n = Math.PI - ((2.0 * Math.PI * y) / Math.Pow(2.0, z));

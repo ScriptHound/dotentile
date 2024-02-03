@@ -24,7 +24,7 @@ public class TestTranslation
         var z = 14;
 
         var latLon = Translation.LatLonFromXYZ(x, y, z);
-        var expected = new List<float> { 72.878013f, 39.344371f };
+        var expected = new List<float> { 72.8613281f, 39.3512917f };
         Assert.Equal(expected, latLon);
     }
     
@@ -33,7 +33,7 @@ public class TestTranslation
     {
         var tile = new XYZTile(11508, 6241, 14);
         var geoJson = Translation.XYZAsGeoJson(tile);
-        var expected = "{ \"type\": \"Point\", \"coordinates\": [39.344371, 72.878013]} ";
+        var expected = "{ \"type\": \"Point\", \"coordinates\": [39.35129, 72.86133] }";
         Assert.Equal(expected, geoJson);
     }
     
