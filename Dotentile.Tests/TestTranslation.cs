@@ -1,4 +1,5 @@
 using Dotentile;
+using MaxRev.Gdal.Core;
 
 namespace Dotentile.Tests;
 
@@ -7,8 +8,8 @@ public class TestTranslation
     [Fact]
     public void TestTranslationToXyz()
     {
-        var lat = 39.344722f;
-        var lon = 72.8761353f;
+        var lat = 72.8761353f;
+        var lon = 39.344722f;
         var zoom = 14;
 
         var xyz = Translation.XYZFromLatLon(lat, lon, zoom);
@@ -40,7 +41,11 @@ public class TestTranslation
     [Fact]
     public void TestTilesFromGeoJson()
     {
-        var geoJson = "{\"type\": \"Polygon\", \"coordinates\": [[[-180, 85], [180, 85], [180, -85], [-180, -85], [-180, 85]]]}";
+        GdalBase.ConfigureAll();
+        var filename = "lenin_peak_zone.geojson";
+        var filepath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, filename);
+        var geoJson = File.ReadAllText(filepath);
+        geoJson = geoJson.Replace("\n", "");
         var zoom = 14;
         var tiles = Translation.TilesFromGeojson(geoJson, zoom);
         var expected = new List<XYZTile>
@@ -64,3 +69,4 @@ public class TestTranslation
         Assert.Equal(expected, extent);
     }
 }
+

@@ -27,4 +27,10 @@
       <ProjectReference Include="..\ScriptHound.Dotentile\ScriptHound.Dotentile.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="lenin_peak_zone.geojson">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>

@@ -19,8 +19,8 @@ public class Translation
     {
         double n = Math.PI - ((2.0 * Math.PI * y) / Math.Pow(2.0, z));
 
-        var lat = (float)((x / Math.Pow(2.0, z) * 360.0) - 180.0);
-        var lon = (float)(180.0 / Math.PI * Math.Atan(Math.Sinh(n)));
+        var lon = (float)((x / Math.Pow(2.0, z) * 360.0) - 180.0);
+        var lat = (float)(180.0 / Math.PI * Math.Atan(Math.Sinh(n)));
 
         return new Coordinate(lat, lon);
     }
@@ -50,7 +50,7 @@ public class Translation
     {
         var tiles = new List<XYZTile>();
         var geometry = Ogr.CreateGeometryFromJson(geojson);
-        var extent = geometry.Boundary();
+        var extent = geometry.GetBoundary();
         var topLeft = XYZFromLatLon((float)extent.GetY(3), (float)extent.GetX(0), zoom);
         var bottomRight = XYZFromLatLon((float)extent.GetY(0), (float)extent.GetX(2), zoom);
         for (int x = topLeft[0]; x <= bottomRight[0]; x++)
