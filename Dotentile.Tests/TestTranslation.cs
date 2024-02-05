@@ -8,8 +8,8 @@ public class TestTranslation
     [Fact]
     public void TestTranslationToXyz()
     {
-        var lat = 72.8761353f;
-        var lon = 39.344722f;
+        var lat = 39.344722f;
+        var lon = 72.8761353f;
         var zoom = 14;
 
         var xyz = Translation.XYZFromLatLon(lat, lon, zoom);
@@ -25,7 +25,7 @@ public class TestTranslation
         var z = 14;
 
         var latLon = Translation.LatLonFromXYZ(x, y, z);
-        var expected = new Coordinate(72.8613281f, 39.3512917f);
+        var expected = new Coordinate(39.3512917f, 72.8613281f);
         Assert.Equal(expected, latLon);
     }
     
@@ -34,7 +34,7 @@ public class TestTranslation
     {
         var tile = new XYZTile(11508, 6241, 14);
         var geoJson = Translation.XYZAsGeoJson(tile);
-        var expected = "{ \"type\": \"Point\", \"coordinates\": [39.35129, 72.86133] }";
+        var expected = "{ \"type\": \"Point\", \"coordinates\": [72.86133, 39.35129] }";
         Assert.Equal(expected, geoJson);
     }
     
