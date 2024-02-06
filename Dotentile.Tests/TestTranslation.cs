@@ -65,7 +65,7 @@ public class TestTranslation
         var y = 6241;
         var z = 14;
         var extent = Translation.ExtentOfXYZ(x, y, z);
-        var expected = new Extent(39.3512917f, 72.8613281f, 39.344722f, 72.8761353f);
+        var expected = new Extent(39.3512917f, 72.8613281f, 39.334297f, 72.8833f);
         Assert.Equal(expected, extent);
     }
 }

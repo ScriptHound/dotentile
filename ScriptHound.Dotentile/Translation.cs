@@ -51,8 +51,8 @@ public class Translation
         var tiles = new List<XYZTile>();
         var geometry = Ogr.CreateGeometryFromJson(geojson);
         var extent = geometry.GetBoundary();
-        var topLeft = XYZFromLatLon((float)extent.GetY(3), (float)extent.GetX(0), zoom);
-        var bottomRight = XYZFromLatLon((float)extent.GetY(0), (float)extent.GetX(2), zoom);
+        var topLeft = XYZFromLatLon((float)extent.GetY(0), (float)extent.GetX(0), zoom);
+        var bottomRight = XYZFromLatLon((float)extent.GetY(2), (float)extent.GetX(2), zoom);
         for (int x = topLeft[0]; x <= bottomRight[0]; x++)
         {
             for (int y = topLeft[1]; y <= bottomRight[1]; y++)
@@ -60,7 +60,7 @@ public class Translation
                 var extentOfTile = ExtentOfXYZ(x, y, zoom);
                 var tileWkt = $"POLYGON(({extentOfTile.NElon} {extentOfTile.NElat}, {extentOfTile.NElon} {extentOfTile.SWlat}, {extentOfTile.SWlon} {extentOfTile.SWlat}, {extentOfTile.SWlon} {extentOfTile.NElat}, {extentOfTile.NElon} {extentOfTile.NElat}))";
                 var tilePoint = Geometry.CreateFromWkt(tileWkt);
-                var tileIntersects = tilePoint.Intersects(geometry);
+                var tileIntersects = tilePoint.Intersect(geometry);
                 if (tileIntersects)
                 {
                     tiles.Add(new XYZTile(x, y, zoom));
